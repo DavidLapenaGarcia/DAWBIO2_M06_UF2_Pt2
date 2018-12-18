@@ -2,41 +2,39 @@
 Main JQ Control for formTypeFrame.html page.
 */
 
-var Dna = new Type(1,"DNA");
-var Proteine = new Type(2,"PROTEINE");
+var Dna       = new Type(1,"DNA");
+var Proteine  = new Type(2,"PROTEINE");
 var TYPE_LIST = [Dna, Proteine];
 
 var PRODUCT_ROW = "<tr>"+
-					"<td><input class='form-control' type='text' class='names'></td>"+
-					"<td><input class='form-control' type='text' class='codes'></td>"+
-					"<td><input class='form-control' type='checkbox' class='testeds'></td>"+
+					"<td><input class='form-control names' type='text'></td>"+
+					"<td><input class='form-control codes' type='text'></td>"+
+					"<td><input class='form-control testeds' type='checkbox'></td>"+
 				"</tr>";
 
 /*
-@name= ().ready( )
-@author= David Lapena Garcia
-@version= 1.0
+@name        = ().ready( )
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = 
-@date = 18-12-2018
-@params= none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 $(document).ready(function (){
-	$("#introduce").click(function(){
-		console.log("cliked Introduce");
+	$("#introduce").click(function(event){
 		
 		event.preventDefault();
 
-		var quantity  = $("#quantity").val()
+		var quantity = $("#quantity").val()
 
 		var validateQuantit = validateQuantity(quantity);
-		var validateTypeId = validateType( $("#type").val() );
+		var validateTypeId  = validateType( $("#type").val() );
 
 		if(validateTypeId==null){
 			var userType = getTypeById($("#type").val());
 			if(validateQuantit == null){
-				var type = getTypeById(userType);
-				updateFormProduct(type, quantity); //send type, make table
+				updateFormProduct(userType, quantity); //send type, make table
 				toFormProduct();
 			}else{
 				$("#messageToUser").html("This quantity is not valid.");
@@ -51,46 +49,46 @@ $(document).ready(function (){
 });
 
 /*
-@name= updateFormProduct
-@author= David Lapena Garcia
-@version= 1.0
+@name        = updateFormProduct
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = 
-@date = 18-12-2018
-@params = none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 function updateFormProduct(type, quantity){
-	window.parent.frames[1].$("#type").html( type.getName() );
+	window.parent.frames[1].$("#type").html( type.name );
 	var rows = doProductsTableRows(quantity);
 	window.parent.frames[1].$("#productsTable").html(rows);
 
 };
 
 /*
-@name= doProductsTableRows
-@author= David Lapena Garcia
-@version= 1.0
+@name        = doProductsTableRows
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = 
-@date = 18-12-2018
-@params= none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 function doProductsTableRows(quantity){
-	var rows="";
-  	for(var i=0; i<quantity; i++){
-		rows = rows + PRODUCT_ROW; 
+	var rows = "";
+  	for(var i=0; i < quantity; i++){
+		rows = rows + PRODUCT_ROW;
 	}
 	return rows;
 };
 
 /*
-@name= toFormProduct
-@author= David Lapena Garcia
-@version= 1.0
+@name        = toFormProduct
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = Hides the actual frame and shows the Product frame.
-@date = 18-12-2018
-@params= none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 function toFormProduct(){
   window.parent.$("#TypeFrame").hide();
@@ -98,32 +96,32 @@ function toFormProduct(){
 };
 
 /*
-@name= getTypeById
-@author= David Lapena Garcia
-@version= 1.0
+@name        = getTypeById
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = 
-@date = 18-12-2018
-@params= none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 function getTypeById(id){
 	userType = null;
-	TYPE_LIST.each(function(){
-  		if(id == $(this).getId()){
-			userType = $(this).getId();
+	$.each(TYPE_LIST, function(index, type){
+		if(id == type.id){
+			userType = type;
 		}
 	});
 	return userType;
 };
 
 /*
-@name= validateType
-@author= David Lapena Garcia
-@version= 1.0
+@name        = validateType
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = 
-@date = 18-12-2018
-@params= none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 function validateType(id){
 	flag = "";
@@ -133,16 +131,8 @@ function validateType(id){
 		flag = "This ID is not longer enought";
 	}else{
 		flag = "This ID does not exist in our Data Base";
-		
-		console.log(TYPE_LIST);
-		console.log("input :"+id); //Dubte
-		console.log("ANALOGIC :"+TYPE_LIST[1].getId()); 
-
-		for(var i = 0; i <= TYPE_LIST.length; i++){
-
-			console.log("Bucle :"+TYPE_LIST[i].getId()); 
-
-			if(id == TYPE_LIST[i].getId()){
+		for(var i = 0; i < TYPE_LIST.length; i++){
+			if(id == TYPE_LIST[i].id){
 				flag = null;
 			}
 		}
@@ -151,13 +141,13 @@ function validateType(id){
 };
 
 /*
-@name= validateQuantity
-@author= David Lapena Garcia
-@version= 1.0
+@name        = validateQuantity
+@author      = David Lapena Garcia
+@version     = 1.0
 @description = 
-@date = 18-12-2018
-@params= none
-@return = none
+@date        = 18-12-2018
+@params      = none
+@return      = none
 */
 function validateQuantity(quantity){
 	flag = "";
