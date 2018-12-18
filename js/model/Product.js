@@ -5,8 +5,8 @@
 @description = Class to save Product.js
 @date        = 16-12-218
 @propieties: 0
-        id       = Id of Type.
-        name     = Name of Type.
+        id   = Id of Type.
+        name = Name of Type.
 
 */
 class Product{
@@ -19,45 +19,45 @@ class Product{
         this._entryDate = entryDate;
 
     }
-    getId(){
+    get id(){
         return this._id;
     }
-    setId(id){
+    set id(id){
         this._id = id;
     }
 
-    getType(){
+    get type(){
         return this._type;
     }
-    setId(type){
+    set id(type){
         this._type = type;
     }
 
-    getName(){
+    get name(){
         return this._name;
     }
-    setName(name){
+    set name(name){
         this._name = name;
     }
 
-    getCode(){
+    get code(){
         return this._code;
     }
-    setCode(code){
+    set code(code){
         this._code = code;
     }
 
-    getTested(){
+    get tested(){
         return this._tested;
     }
-    setTested(tested){
+    set tested(tested){
         this._tested = tested;
     }
 
-    getEntryDate(){
+    get entryDate(){
         return this._entryDate;
     }
-    setEntryDate(entryDate){
+    set entryDate(entryDate){
         this._entryDate = entryDate;
     }
 

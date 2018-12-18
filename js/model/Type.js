@@ -5,26 +5,26 @@
 @description = Class to save Type.js
 @date        = 16-12-218
 @propieties: 0
-        id       = Id of Type.
-        name     = Name of Type.
+        id   = Id of Type.
+        name = Name of Type.
 
 */
 class Type{
     constructor(id, name){
-        this._id      = id;
-        this._name     = name;
+        this._id   = id;
+        this._name = name;
     }
-    getId(){
+    get id(){
         return this._id;
     }
-    setId(id){
+    set id(id){
         this._id = id;
     }
 
-    getName(){
+    get name(){
         return this._name;
     }
-    setName(name){
+    set name(name){
         this._name = name;
     }
 
