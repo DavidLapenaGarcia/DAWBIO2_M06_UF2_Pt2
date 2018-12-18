@@ -1,0 +1,23 @@
+$ git init			empezar proyecto.
+$ git status			revisa como esta el futuro commit, cambios o no..
+$ git add			subir un archivo nuevo o un archivo con cambios.
+	 add .			Subir todos los archivos.
+$git commit			guardar un repositorio.
+	-m "messege"	Deja un mensaje del commit
+$git config:
+	--global user.email "mail@mail".
+	--global user.name "name".
+$ git log			para poder diferenciar cada commit, el historial
+$git checkout -- file.name	rehacer un cambio que esta pendiente de commit.
+$git diff file.name		ver los cambios realizados.
+file .gitignore			archivo dónde se citan los archivos que git debe ignorar
+$git branch			Muestra las versiones que hay, la master etc..
+$git branch nAmE		Crea una branch/branca nueva
+$git checkout nAmE		Para entrar en una rama diferente. 
+$git remote add origin	https:	To declare the remote repository.
+$git push -u origin master	To change in remote repository.
+
+testing commit
+it no changes in remote, only in local
+HOW 'DOWNLOAD':
+cnt+mayus+P -> writte 'git:clone' -> 'https:'

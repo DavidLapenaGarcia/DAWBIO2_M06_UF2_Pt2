@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <script type="text/javascript" src="./js/control/index.js">
+      </script>
+      <title>Pt1.2</title>
+    </head>
+  </head>
+  <body>
+    <div style="width:100%; height:500px; background-color:teal;">
+      <div style="width:100%; height:2px;"></div>
+      <div style="width:99.8%; height:50px; background-color:white; float:right;">
+        <div style="width:100%; height:15px;"></div>
+        <div>
+          <p style="margin-left:15px; color:#717d7e">Biotech - Marisa Ginzález / Robert Plana Lacasa</p>
+        </div>
+      </div>
+      <img style="margin-top:25px; margin-left:2px;" src="./imatges/foto.png" alt="foto">
+      <iframe id="iframe" src="iframe\iframeNew.html" frameborder=0 style="width:45%; height:84.5%; float:right; margin-top:25px; margin-right:250px;"></iframe>
+      <div style="width:45%; height:83%; background-color:#d5dbdb; float:right;margin-top:25px ;margin-right:250px;"  id="BioTable">
+        <div style="background-color:white;width:100%; height:50px;">
+          <div style="width:100%; height:5px;"></div>
+          <div >
+            <h4 style="margin-left:25px; color:#717d7e" id="productType">  </h4><br>
+            <div style="margin-left:25px;">
+              <table>
+                <tr>
+                  <th style="width:230px;">Product name</th>
+                  <th style="width:230px;">Code</th>
+                  <th style="width:50px;">Tested</th>
+                </tr>
+              </table>
+            </div>
+            <div id="numberProducts">  </div>
+          </div>
+          <div style="margin:25px;">
+            <button class="btn btn-primary" onclick="popup()"> Introduce the products in the Data Base</button>
+            <button class="btn btn-danger" onclick="goBack()" style="float:right;"> Cancel </button>
+          </div>
+          <div style="margin:25px;" id="divResult">
+            <p id="pResult">  </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
