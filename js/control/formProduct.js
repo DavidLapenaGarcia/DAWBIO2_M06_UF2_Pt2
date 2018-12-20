@@ -14,41 +14,32 @@ Main JQ Control for formProductFrame.html page.
 $( document ).ready(function(event) {
     $("#register").click(function(event){
         event.preventDefault(); //witchout it Product table disapears.
-		
-		var messageToUser = $("#messageToUser");
-		var products = productsArray();
+
+		var names = $(".names").map(function() {
+                    return $(this).val();
+                }).get();
+		var codes = $(".codes").map(function() {
+						return $(this).val();
+					}).get();
+		var testeds = $(".testeds").map(function() {
+						return $(this).is(':checked');
+					}).get();
+		var type = $("#type").html();
+
+		var products = productsArray(type, names, codes, testeds);
 
 		if(products[0]){
-			register(products[1]);
+			confirmRegister();
 		}else{
-			messageToUser.html(products[1]);
+			$("#messageToUser").html(products[1]);
 		}
     });
+
 	$("#toTypeFrame").click(function(){
         toTypeFrame();
     });
 });
-/*
-@name        = register
-@author      = David Lapena Garcia
-@version     = 1.0
-@description = First, check if the data given by the user is correct.
-If is correct, call to confirm the registraion.
-If it is not, notifies the user.
-@date   = 18-12-2018
-@params = none
-@return = none
-*/ 
-function register(products){
-	alert("ok");
-  if(validateDna(dna) === null){
-  	$("#messageToUser").html(dna+" is correct");
-  	confirmRegister();
-  }else{
-	$("#messageToUser").html("This DNA code is no valid: [ "+dna+"]");
-  	$("#messageError").html("ERROR: "+validateDna(dna));
-  }
-};
+
 /*
 @name        = confirmRegister
 @author      = David Lapena Garcia
@@ -59,14 +50,12 @@ function register(products){
 @return      = null if correct. String wicth the error if not.
 */
 function confirmRegister() {
-	if( validateDna( $("#Dna").val().toUpperCase()==null)){
-		if (confirm("Confirm registration?") == true) {
-	        window.open("./../../pop-Up/popIntroduceProducts.html", "_blank","width=1300px", "height=500px");        
-	        return true;
-	    } else {
-	        alert("Registry Cancelled ");
-	        return false;
-	    }
+	if (confirm("Confirm registration?") == true) {
+		window.open("./../../pop-Up/popIntroduceProducts.html", "_blank","width=1300px", "height=500px");        
+		return true;
+	} else {
+		alert("Registry Cancelled ");
+		return false;
 	}
 };
 

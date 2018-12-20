@@ -10,19 +10,22 @@ var TYPE_LIST = [Dna, Proteine];
 @name        = productsArray()
 @author      = David Lapena Garcia
 @version     = 1.0
-@description = Get the products in a table.
-It needs: A type 'id', and with classes: 'name', 'code', and 'tested'.
+@description = Get the products in a table and push it into array.
 It will validate all the inputs fields and a valid type.
-It will return an array.
+It will return an array:
     array[0] : Boolen. True if success, false if not.
     array[1] : Products[] if success, string with the error if not.
 
 @date        = 20-12-2018
-@params      = none
+@params      = 	String type	: 	Product type's name.
+				names[]		: 	Product´s name.
+				codes[]		:	Product´s code.
+				testeds[]	:	Product´s test.
+
 @return      =  array[0] : True/false
                 array[1] : products[] / string
 */
-function  productsArray(){
+function  productsArray(type, names, codes, testeds){
     var result = [false, ""];
     var names = $(".names").map(function() {
                     return $(this).val();
@@ -33,7 +36,7 @@ function  productsArray(){
     var testeds = $(".testeds").map(function() {
                     return $(this).is(':checked');
                 }).get();
-    var type = getTypeByName( $("#type").html() );
+    var type = getTypeByName(type );
     
     if(type!=null){
         var validatedNames = validateNames(names);
