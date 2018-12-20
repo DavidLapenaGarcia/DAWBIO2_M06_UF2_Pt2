@@ -8,7 +8,7 @@ var TYPE_LIST = [Dna, Proteine];
 
 var PRODUCT_ROW = "<tr>"+
 					"<td><input class='form-control names' type='text'></td>"+
-					"<td><input class='form-control codes' type='text'></td>"+
+					"<td><input class='form-control codes' type='text' onkeyup='mayus(this);'></td>"+
 					"<td><input class='form-control testeds' type='checkbox'></td>"+
 				"</tr>";
 
