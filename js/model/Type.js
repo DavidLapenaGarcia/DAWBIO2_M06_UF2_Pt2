@@ -27,7 +27,15 @@ class Type{
     set name(name){
         this._name = name;
     }
-
+    /*
+    @name        = printInfo
+    @author      = David Lapena Garcia
+    @version     = 1.0
+    @description = Print on consoloe all Type values.
+    @date        = 21-12-218
+    @params      = none
+    @return      = none
+    */
     printInfo(){
         console.log("_TYPE_{ID:"+this._id+" ,Name:"+this._name+"}");
     }
