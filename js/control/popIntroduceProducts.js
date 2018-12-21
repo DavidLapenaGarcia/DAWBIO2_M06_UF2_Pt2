@@ -28,8 +28,8 @@ function loadFromOpener( popup ){
 	console.log(window.opener);
 
 	var names = window.opener.$(".names").map(function() {
-				return $(this).val();
-			}).get();
+					return $(this).val();
+				}).get();
 	var codes = window.opener.$(".codes").map(function() {
 					return $(this).val();
 				}).get();
@@ -39,11 +39,11 @@ function loadFromOpener( popup ){
 	var type = window.opener.$("#type").text();
 
 	var products = productsArray(type, names, codes, testeds);
-	console.log(products);
+	
 
 	if(products[0]){
-			$("date").html(currentDate());
-			$("type").html("type");
+			$("#date").html( currentDate() );
+			$("#type").html(type);
 			$("#productsTable").html( doHtmlIntroduceTable(products[1]) );
 		}else{
 			$("#messageToUser").html(products[1]);
