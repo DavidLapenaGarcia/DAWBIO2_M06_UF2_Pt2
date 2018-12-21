@@ -10,7 +10,7 @@ Then, makes the logo dance.
 */
 $(document).ready(function (){
   ShowFormType();
-  //logoCrazy();
+  logoCrazy();
 });
 
 /*
@@ -25,13 +25,11 @@ $(document).ready(function (){
 function ShowFormType(){
   $("#ProductFrame").hide();
   $("#TypeFrame").show();
-  //$("#ProductFrame").show();
-  //$("#TypeFrame").hide();
 };
 /*
 @name= logoCrazy
-@author= David Lapena Garcia
-@version= 1.0
+@author = David Lapena Garcia
+@version = 1.0
 @description = Makes the logo dance.
 @date = 18-12-2018
 @params= none
