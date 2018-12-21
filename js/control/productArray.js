@@ -27,15 +27,7 @@ It will return an array:
 */
 function  productsArray(type, names, codes, testeds){
     var result = [false, ""];
-    var names = $(".names").map(function() {
-                    return $(this).val();
-                }).get();
-    var codes = $(".codes").map(function() {
-                    return $(this).val();
-                }).get();
-    var testeds = $(".testeds").map(function() {
-                    return $(this).is(':checked');
-                }).get();
+
     var type = getTypeByName(type );
     
     if(type!=null){
