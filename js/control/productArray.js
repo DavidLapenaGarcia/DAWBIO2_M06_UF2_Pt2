@@ -26,7 +26,7 @@ It will return an array:
                 array[1] : products[] / string
 */
 function  productsArray(type, names, codes, testeds){
-    var result = [false, ""];
+    var result = [false, null];
 
     var type = getTypeByName(type );
     
@@ -34,21 +34,21 @@ function  productsArray(type, names, codes, testeds){
         var validatedNames = validateNames(names);
         var validatedCodes = validateCodes(type.name, codes);
         var validatedTesteds = validateTesteds(testeds);
-
+	 
         if(names.lenght == codes.lenght && codes.lenght == testeds.lenght){
-            if(validatedNames==null && validatedCodes==null && validatedTesteds==null){
-                let date = currentDate();
-                result[1] = getProductsArray(type, names, codes, testeds, date);
-                result[0] = true;
-            }else{
-                if(validatedNames!=null){
-                    result[1] = "ERROR: " + validatedNames;
-                }else if(validatedCode!=null){
-                    result[1] = "ERROR: " + validatedCode;
-                }else{
-                    result[1] = "ERROR: " + validatedTesteds;
-                }
-            }
+			if(validatedNames != null){
+				result[1] = "ERROR: " + validatedNames;
+
+			}else if(validatedCodes != null){
+				result[1] = "ERROR: " + validatedCodes;
+
+			}else if(validatedTesteds != null){
+				result[1] = "ERROR: " + validatedTesteds;
+
+			}else{
+				result[0] = true;
+				result[1] = getProductsArray(type, names, codes, testeds, currentDate());
+			}
         }else{
             result[1] = "Error: Diferent inputs amount.";
         }	
@@ -107,9 +107,10 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 function validateNames(names){
 	var result    = null;
 	$.each(names, function(index, name){
-		let validatedName = validateName(name);
-		if(validatedName != null){
-			return validatedName;
+		var nameError = validateName(name);
+		if(nameError != null){
+			result =  nameError;
+			return false;
 		}
 	});
 	return result;
@@ -125,13 +126,13 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateName(name){
-	var result    = null;
+	var result    = "";
 	if($.isNumeric(name)){
-		result = "The sentence can not be numeric";
+		result = "The NAME sentence can not be numeric";
 	}else if(typeof name != 'string'){
-		result = "The sentence must be alphabetical";
+		result = "The NAME sentence must be alphabetical";
 	}else if(name.lenght <= 0 || name === ""){
-		result = "The sentence must be longer";
+		result = "The NAME sentence must be longer";
 	}else{
 		result = null;
 	}
@@ -150,18 +151,21 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 */
 function validateCodes(typeName, codes){
 	var result	= null;
+
 	if(typeName == TYPE_LIST[0].name){
 		$.each(codes, function(index, code){
-			let validatedCode = validateDna(code);
-			if(validatedCode != null){
-				return validatedCode;
+			let codeError = validateDna(code);
+			if(codeError != null){
+				result =  codeError;
+				return false;
 			}
 		});
 	}else if (typeName == TYPE_LIST[1].name){
 		$.each(codes, function(index, name){
-			let validatedCode = validateProteine(code);
-			if(validatedName != null){
-				return validatedCode;
+			let codeError = validateProteine(code);
+			if(codeError != null){
+				result =  codeError;
+				return false;
 			}
 		});
 	}
@@ -178,17 +182,17 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateDna(dna){
-	//dna = dna.toUpperCase();  // why today this breaks? 
+	dna = dna.toUpperCase();  // why today this breaks? 
 	var result    = null;
 	var adnRegExp = new RegExp("[^ACGT]","i");
 	if($.isNumeric(dna)){
-		result = "The sentence can not be numeric";
+		result = "The DNA sentence can not be numeric";
 	}else if(typeof dna != 'string'){
-		result = "The sentence must be alphabetical";
+		result = "The DNA sentence must be alphabetical";
 	}else if(dna.lenght <= 0 || dna === ""){
-		result = "The sentence must be longer";
+		result = "The DNA sentence must be longer";
 	}else if(dna.match(adnRegExp)){
-		result = "The sentence must be a valid dna sentence [A-C-T-G]";
+		result = "The DNA sentence must be a valid dna sentence [A-C-T-G]";
 	}else{
 		result = null;
 	}
@@ -209,13 +213,13 @@ function validateProteine(proteine){
 	var result    = null;
 	var proteinRegExp = new RegExp("[^FLSYCWPHQRIMTNKVADEG]","i");
 	if($.isNumeric(proteine)){
-		result = "The sentence can not be numeric";
+		result = "The PROTEINE sentence can not be numeric";
 	}else if(typeof proteine != 'string'){
-		result = "The sentence must be alphabetical";
+		result = "The PROTEINE sentence must be alphabetical";
 	}else if(proteine.lenght <= 0 || proteine === ""){
-		result = "The sentence must be longer";
+		result = "The PROTEINE sentence must be longer";
 	}else if(proteine.match(proteinRegExp)){
-		result = "The sentence must be a valid PROTEINE sentence [F-L-S-Y-C-W-P-H-Q-R-I-M-T-N-K-V-A-D-E-G]";
+		result = "The PROTEINE sentence must be a valid PROTEINE sentence [F-L-S-Y-C-W-P-H-Q-R-I-M-T-N-K-V-A-D-E-G]";
 	}else{
 		result = null;
 	}
@@ -234,9 +238,10 @@ function validateProteine(proteine){
 function validateTesteds(testeds){
 	var result    = null;
 	$.each(testeds, function(index, test){
-		let validatedTest = validateTest(test);
-		if(validatedTest != null){
-			return validatedTest;
+		let testError = validateTest(test);
+		if(testError != null){
+			result =  testError;
+			return false;
 		}
 	});
 	return result;
@@ -253,8 +258,8 @@ Validates if test is TRUE or FALSE
 */
 function validateTest(test){
 	var result    = null;
-	if(test == true || test == false){
-		result="Not a valid tested option."
+	if(typeof test !== "boolean"){
+		result="Not a valid test option."
 	}
 	return result;
 };
