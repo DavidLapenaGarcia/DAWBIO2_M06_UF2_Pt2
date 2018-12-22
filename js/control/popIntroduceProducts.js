@@ -3,6 +3,7 @@
 @author= David Lapena Garcia
 @version= 1.0
 @description = Starts the popup charging the needed data.
+				If closee
 @date = 18-12-2018
 @params= none
 @return = none
@@ -12,6 +13,9 @@ $(document).ready(function (){
 
 	$("#closePopUp").click(function(){
         closePopup();
+    });
+	$("#print").click(function(){
+        window.print();
     });
 });
 
@@ -45,6 +49,7 @@ function loadFromOpener( popup ){
 			$("#date").html( currentDate() );
 			$("#type").html(type);
 			$("#productsTable").html( doHtmlIntroduceTable(products[1]) );
+			$("#totalProducts").html(products.lenght);
 		}else{
 			$("#messageToUser").html(products[1]);
 	}

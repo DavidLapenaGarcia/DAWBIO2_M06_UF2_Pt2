@@ -6,7 +6,12 @@ Main JQ Control for formProductFrame.html page.
 @name        = $(document).ready()
 @author      = David Lapena Garcia
 @version     = 1.0
-@description = Makes changes at the time of loading the frame[1].
+@description = Makes changes at the time of loading the page.
+				If register button is clicked, cancels the default event's values on form.
+				Next, gets all the inputs fields and call to make an Product's array with that values.
+				If the values are correct, call to confirm register. If not, displais an error message.
+
+				If the cancel button is cliked, it call to return to the TypeFrame.
 @date        = 18-12-2018
 @params      = none
 @return      = none
@@ -14,7 +19,6 @@ Main JQ Control for formProductFrame.html page.
 $( document ).ready(function(event) {
     $("#register").click(function(event){
         event.preventDefault(); //witchout it Product table disapears.
-
 		var names = $(".names").map(function() {
                     return $(this).val();
                 }).get();
@@ -27,7 +31,6 @@ $( document ).ready(function(event) {
 		var type = $("#type").html();
 
 		var products = productsArray(type, names, codes, testeds);
-
 		if(products[0]){
 			confirmRegister();
 		}else{
@@ -46,8 +49,8 @@ $( document ).ready(function(event) {
 @version     = 1.0
 @description = This function ask to confirms the registration by the user.
 @date        = 18-12-2018
-@params      = dna
-@return      = null if correct. String wicth the error if not.
+@params      = none
+@return      = none
 */
 function confirmRegister() {
 	if (confirm("Confirm registration?") == true) {
@@ -63,7 +66,7 @@ function confirmRegister() {
 @name        = mayus
 @author      = David Lapena Garcia
 @version     = 1.0
-@description = Transforms all the given values to upper case at the moment when user writes.
+@description = Transforms all the given values to upper case at when user writes.
 @date        = 18-12-2018
 @params      = e string
 @return      = none
@@ -73,7 +76,7 @@ function mayus(e) {
 };
 
 /*
-@name        = FormToChromosomeFrame
+@name        = toTypeFrame
 @author      = David Lapena Garcia
 @version     = 1.0
 @description = Hide the frame[1] and shows the frame[0] in the parent window.
@@ -87,10 +90,10 @@ function toTypeFrame(){
 	window.parent.$("#TypeFrame").show();
 };
 /*
-@name        = toChromosome
+@name        = cleanProductsFrame
 @author      = David Lapena Garcia
 @version     = 1.0
-@description = This function resets the modified page content  and call a function to return to the frame[0]
+@description = This function resets the modified page content.
 @date        = 18-12-2018
 @params      = none
 @return      = none
