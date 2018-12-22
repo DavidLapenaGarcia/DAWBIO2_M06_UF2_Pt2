@@ -161,7 +161,7 @@ function validateCodes(typeName, codes){
 			}
 		});
 	}else if (typeName == TYPE_LIST[1].name){
-		$.each(codes, function(index, name){
+		$.each(codes, function(index, code){
 			let codeError = validateProteine(code);
 			if(codeError != null){
 				result =  codeError;
@@ -182,7 +182,7 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateDna(dna){
-	dna = dna.toUpperCase();  // why today this breaks? 
+	dna = dna.toUpperCase();  
 	var result    = null;
 	var adnRegExp = new RegExp("[^ACGT]","i");
 	if($.isNumeric(dna)){
@@ -209,7 +209,7 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateProteine(proteine){
-	//proteine = proteine.toUpperCase();  // why today this breaks? 
+	proteine = proteine.toUpperCase(); 
 	var result    = null;
 	var proteinRegExp = new RegExp("[^FLSYCWPHQRIMTNKVADEG]","i");
 	if($.isNumeric(proteine)){
