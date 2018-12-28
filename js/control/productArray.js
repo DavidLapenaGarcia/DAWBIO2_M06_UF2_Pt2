@@ -65,7 +65,7 @@ function  productsArray(type, names, codes, testeds){
 @description = 
 @date   = 18-12-2018
 @params = none
-@return = Product[] if success, null in case of error.
+@return = Products[] products.
 */ 
 function getProductsArray(type, names, codes, testeds, date){
 	var products = [];
@@ -278,6 +278,7 @@ function currentDate(){
   				"May", 			"June", 		"July", 	"August",
 				"September", 	"October", 		"November", "December"];
   var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  
   var today = new Date();
   var date = 	days[today.getDay()] + ", " + 
   				today.getDate() + " of " + 

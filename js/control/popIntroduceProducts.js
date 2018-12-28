@@ -49,7 +49,7 @@ function loadFromOpener( popup ){
 			$("#date").html( currentDate() );
 			$("#type").html(type);
 			$("#productsTable").html( doHtmlIntroduceTable(products[1]) );
-			$("#totalProducts").html(products.lenght);
+			$("#totalProducts").html( products[1].length );
 		}else{
 			$("#messageToUser").html(products[1]);
 	}
