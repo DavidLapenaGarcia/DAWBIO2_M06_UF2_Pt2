@@ -268,7 +268,7 @@ function validateTest(test){
 @name= currentDate
 @author= David Lapena Garcia
 @version= 1.0
-@description= This functions get the current date and convert it to a written date.
+@description= This functions get the current date and convert it to a written date on a string.
 @date = 11-11-2018
 @params= none
 @return =  String date

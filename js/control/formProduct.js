@@ -1,6 +1,4 @@
-/*
-Main JQ Control for formProductFrame.html page.
-*/
+/* Main JQ Control for formProductFrame.html page. */
 
 /*
 @name        = $(document).ready()

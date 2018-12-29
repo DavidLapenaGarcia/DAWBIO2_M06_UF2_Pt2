@@ -13,7 +13,7 @@ var PRODUCT_ROW = "<tr>"+
 				"</tr>";
 
 /*
-@name        = ().ready( )
+@name        = (document).ready
 @author      = David Lapena Garcia
 @version     = 1.0
 @description = When user clicks introduce button, cancels the defaults from values.

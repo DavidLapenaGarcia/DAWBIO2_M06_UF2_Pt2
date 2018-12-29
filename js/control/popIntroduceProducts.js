@@ -55,6 +55,15 @@ function loadFromOpener( popup ){
 	}
 };
 
+/*
+@name= doHtmlIntroduceTable
+@author= David Lapena Garcia
+@version= 1.0
+@description = Get an product array and do as many rows as array length, and  in each row the information of each product.
+@date = 18-12-2018
+@params= Product products[] :Product's array
+@return = String tableContent : html string with evry needed table's row.
+*/
 function doHtmlIntroduceTable(products){
 	tableContent = "";
 	$.each(products, function(index, product){
@@ -71,7 +80,7 @@ function doHtmlIntroduceTable(products){
 @author= David Lapena Garcia
 @version= 1.0
 @description= Close the popup
-@date = 11-11-2018
+@date = 18-12-2018
 @params= none
 @return = none
 */
