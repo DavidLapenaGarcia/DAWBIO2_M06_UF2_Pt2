@@ -32,6 +32,7 @@ $( document ).ready(function(event) {
 
 		var products = productsArray(type, names, codes, testeds);
 		if(products[0]){
+			$("#messageToUser").html("");
 			confirmRegister();
 		}else{
 			$("#messageToUser").html(products[1]);
