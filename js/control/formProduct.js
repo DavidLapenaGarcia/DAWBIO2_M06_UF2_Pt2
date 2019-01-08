@@ -10,9 +10,9 @@
 				If the values are correct, call to confirm register. If not, displais an error message.
 
 				If the cancel button is cliked, it call to return to the TypeFrame.
-@date        = 18-12-2018
-@params      = none
-@return      = none
+@date   = 18-12-2018
+@params = none
+@return = none
 */
 $( document ).ready(function(event) {
     $("#register").click(function(event){
@@ -53,7 +53,7 @@ $( document ).ready(function(event) {
 */
 function confirmRegister() {
 	if (confirm("Confirm registration?") == true) {
-		window.open("./../../pop-Up/popIntroduceProducts.html", "_blank","width=1300px", "height=500px");        
+		window.open("./../pop-Up/popIntroduceProducts.html", "_blank","width=1300px", "height=500px");        
 		return true;
 	} else {
 		alert("Registry Cancelled ");
