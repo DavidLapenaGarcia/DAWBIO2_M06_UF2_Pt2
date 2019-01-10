@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- css -->
+    <link rel="stylesheet" 
+      href="./../css/reset.css" 
+      media="screen" 
+      title="no title">
+    <!-- Boostrap -->
+    <link 
+      rel="stylesheet" 
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+      crossorigin="anonymous">
+    <!-- Own css -->
+    <!-- vendors -->
+    <!-- Jquery -->
+     <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- js -->
+    <!-- model -->
+    <!-- control -->
+    <script type="text/javascript" src="./../js/control/productArray.js"></script>
+    <script type="text/javascript" src="./../js/control/popIntroduceProducts.js"></script>
+
+    <title></title>
+  </head>
+
+  <body style="background-color:teal;">
+    <div class="content-fluid row bg-light"></div>
+
+      <div class="col-12">
+        <blockquote class="blockquote ml-3">
+          <footer class="blockquote-footer">
+            Entry Date :<a id="date"></a>
+          </footer>
+        </blockquote>   
+      </div>
+
+      <div class="col-12">
+        <blockquote class="blockquote ml-3">
+          <footer class="blockquote-footer">Total of products introduced in the database:
+            <a id="totalProducts"></a> 
+          </footer>
+        </blockquote>   
+      </div>
+      <div class="col-12 d-flex justify-content-around m-2">
+        <div class="btn-group " role="group" aria-label="Basic example">
+          <button type="submit" id="closePopUp" class="btn btn-primary"> Close Window</button>
+          <button type="submit" id="print" class="btn btn-danger"> Print </button>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
