@@ -8,11 +8,57 @@ Then, makes the logo dance.
 @params= none
 @return = none
 */
-$(document).ready(function (){
+$(document).ready(function (event){
   ShowFormType();
-  logoCrazy();
+  //logoCrazy();
+  $(".exercices").click(function(event){
+      event.preventDefault(); 
+      selected = $(this).val();
+      GoToSelectedFunction(selected);
+  })
 });
 
+function GoToSelectedFunction(selected){
+  switch(selected) {
+    case "f0":
+      ShowFormType();
+      break;
+    case "f1":
+      hideAll();
+      $("#f1").show();
+      break;
+    case "f2":
+      hideAll();
+      $("#f2").show();
+      break;
+    case "f3":
+      hideAll();
+      $("#f3").show();
+      break;
+    case "f4":
+      hideAll();
+      $("#f4").show();
+      break;
+    case "f5":
+      hideAll();
+      $("#f5").show();
+      break;
+    default:
+      alert("This button are making problems: "+selected);
+  }
+};
+
+function hideAll(){
+  // DUBTE: com fer hide() mitjançant window.frames y un .each() o for(){}; ?
+  $("#mainExercice").hide()
+  $("#ProductFrame").hide();
+  $("#TypeFrame").hide();
+  $("#f1").hide();
+  $("#f2").hide();
+  $("#f3").hide();
+  $("#f4").hide();
+  $("#f5").hide();
+}
 /*
 @name= ShowFormType
 @author= David Lapena Garcia
@@ -23,7 +69,8 @@ $(document).ready(function (){
 @return = none
 */
 function ShowFormType(){
-  $("#ProductFrame").hide();
+  hideAll();
+  $("#mainExercice").show()
   $("#TypeFrame").show();
 };
 /*
