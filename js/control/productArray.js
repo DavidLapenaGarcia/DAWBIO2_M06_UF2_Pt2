@@ -10,20 +10,21 @@ var TYPE_LIST = [Dna, Proteine];
 @name        = productsArray()
 @author      = David Lapena Garcia
 @version     = 1.0
-@description = Get the products in a table and push it into array.
+@description = Get type.name, names[], codes[], testeds[] inputs by user
+and push it into array.
 It will validate all the inputs fields and a valid type.
-It will return an array:
-    array[0] : Boolen. True if success, false if not.
-    array[1] : Products[] if success, string with the error if not.
+It    will return an array: 
+array[0]                  : Boolen. True if success, false if not.
+array[1]                  : Products[] if success,   string with the error if not.
 
-@date        = 20-12-2018
-@params      = 	String type	: 	Product type's name.
-				names[]		: 	Product´s name.
-				codes[]		:	Product´s code.
-				testeds[]	:	Product´s test.
+@date   = 20-12-2018
+@params = String type	: 	Product type's name.
+				names  []: Product´s name.
+				codes  []: Product´s code.
+				testeds[]: Product´s test.
 
-@return      =  array[0] : True/false
-                array[1] : products[] / string
+@return =  array[0]: True/false
+array  [1]         : products[] / string
 */
 function  productsArray(type, names, codes, testeds){
     var result = [false, null];
@@ -31,8 +32,8 @@ function  productsArray(type, names, codes, testeds){
     var type = getTypeByName(type );
     
     if(type!=null){
-        var validatedNames = validateNames(names);
-        var validatedCodes = validateCodes(type.name, codes);
+        var validatedNames   = validateNames(names);
+        var validatedCodes   = validateCodes(type.name, codes);
         var validatedTesteds = validateTesteds(testeds);
 	 
         if(names.lenght == codes.lenght && codes.lenght == testeds.lenght){
@@ -53,7 +54,7 @@ function  productsArray(type, names, codes, testeds){
             result[1] = "Error: Diferent inputs amount.";
         }	
     }else{
-        result[1]= "Error: Sorry, there is a problem witch the selected type before";
+        result[1] = "Error: Sorry, there is a problem witch the selected type before";
     }
     return result;
 };
@@ -63,15 +64,15 @@ function  productsArray(type, names, codes, testeds){
 @author      = David Lapena Garcia
 @version     = 1.0
 @description = 
-@date   = 18-12-2018
-@params = none
-@return = Products[] products.
+@date        = 18-12-2018
+@params      = none
+@return      = Products[] products.
 */ 
 function getProductsArray(type, names, codes, testeds, date){
 	var products = [];
 	for( var i = 0; i < names.length ;i++){
-		var product = new Product(i ,type ,names[i] ,codes[i], testeds[i], date);
-		products[i] = product;
+		var      product = new Product(i ,type ,names[i] ,codes[i], testeds[i], date);
+		products[i]      = product;
 	}
 	return products;
 };
@@ -80,9 +81,9 @@ function getProductsArray(type, names, codes, testeds, date){
 @author      = David Lapena Garcia
 @version     = 1.0
 @description = Search in TYPE_LIST the Type object by name.
-@date   = 18-12-2018
-@params = none
-@return = Type object if success, null in case of error.
+@date        = 18-12-2018
+@params      = none
+@return      = Type object if success, null in case of error.
 */ 
 function getTypeByName(name){
 	var userType = null;
@@ -105,11 +106,11 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateNames(names){
-	var result    = null;
+	var result = null;
 	$.each(names, function(index, name){
 		var nameError = validateName(name);
 		if(nameError != null){
-			result =  nameError;
+			result = nameError;
 			return false;
 		}
 	});
@@ -126,7 +127,7 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateName(name){
-	var result    = "";
+	var result = "";
 	if($.isNumeric(name)){
 		result = "The NAME sentence can not be numeric";
 	}else if(typeof name != 'string'){
@@ -150,13 +151,13 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateCodes(typeName, codes){
-	var result	= null;
+	var result = null;
 
 	if(typeName == TYPE_LIST[0].name){
 		$.each(codes, function(index, code){
 			let codeError = validateDna(code);
 			if(codeError != null){
-				result =  codeError;
+				result = codeError;
 				return false;
 			}
 		});
@@ -164,7 +165,7 @@ function validateCodes(typeName, codes){
 		$.each(codes, function(index, code){
 			let codeError = validateProteine(code);
 			if(codeError != null){
-				result =  codeError;
+				result = codeError;
 				return false;
 			}
 		});
@@ -182,7 +183,7 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateDna(dna){
-	dna = dna.toUpperCase();  
+	    dna       = dna.toUpperCase();
 	var result    = null;
 	var adnRegExp = new RegExp("[^ACGT]","i");
 	if($.isNumeric(dna)){
@@ -209,8 +210,8 @@ Validates a not numeric data, an string data, not empty data, a length enough da
 @return = null if correct. String wicth the error if not.
 */
 function validateProteine(proteine){
-	proteine = proteine.toUpperCase(); 
-	var result    = null;
+	    proteine      = proteine.toUpperCase();
+	var result        = null;
 	var proteinRegExp = new RegExp("[^FLSYCWPHQRIMTNKVADEG]","i");
 	if($.isNumeric(proteine)){
 		result = "The PROTEINE sentence can not be numeric";
@@ -231,16 +232,16 @@ function validateProteine(proteine){
 @author      = David Lapena Garcia
 @version     = 1.0
 @description = This function validates a correct test array.
-@date   = 18-12-2018
-@params = test[]
-@return = null if correct. String wicth the error if not.
+@date        = 18-12-2018
+@params      = test[]
+@return      = null if correct. String wicth the error if not.
 */
 function validateTesteds(testeds){
-	var result    = null;
+	var result = null;
 	$.each(testeds, function(index, test){
 		let testError = validateTest(test);
 		if(testError != null){
-			result =  testError;
+			result = testError;
 			return false;
 		}
 	});
@@ -257,21 +258,21 @@ Validates if test is TRUE or FALSE
 @return = null if correct. String wicth the error if not.
 */
 function validateTest(test){
-	var result    = null;
+	var result = null;
 	if(typeof test !== "boolean"){
-		result="Not a valid test option."
+		result = "Not a valid test option."
 	}
 	return result;
 };
 
 /*
-@name= currentDate
-@author= David Lapena Garcia
-@version= 1.0
-@description= This functions get the current date and convert it to a written date on a string.
-@date = 11-11-2018
-@params= none
-@return =  String date
+@name        = currentDate
+@author      = David Lapena Garcia
+@version     = 1.0
+@description = This functions get the current date and convert it to a written date on a string.
+@date        = 11-11-2018
+@params      = none
+@return      = String date
 */
 function currentDate(){
   var months = ["January", 		"February", 	"March", 	"April", 
@@ -280,7 +281,7 @@ function currentDate(){
   var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   
   var today = new Date();
-  var date = 	days[today.getDay()] + ", " + 
+  var date  = days[today.getDay()] + ", " +
   				today.getDate() + " of " + 
 				months[today.getMonth()] + ' ' +
 				today.getFullYear();
